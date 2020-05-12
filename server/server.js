@@ -13,6 +13,8 @@ var app = express();
 var server = http.createServer(app);    // creating an http server sending express app as an argument
 var io = socketIO(server);  // integrating socket io in the server
 
+const port = process.env.PORT || 3000 ;
+
 app.use(express.static(publicPath));    // serving the static html pages using express middleware
 
 io.on("connection", (socket) => {   // establishing a listener for a new connection (in socket)
@@ -70,6 +72,6 @@ io.on("connection", (socket) => {   // establishing a listener for a new connect
     });
 });
 
-server.listen(3000, () => {
-    console.log("Server started at 3000");
+server.listen(port, () => {
+    console.log(`Server started at ${port}`);
 })
